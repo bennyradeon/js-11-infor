@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Variabel, Tipe Data, Operator</title>
+    <!-- Bootstrap, icons, fonts, prism -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        /* same style as bab1, bisa copy */
+        body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; }
+        .navbar { background: #764ba2 !important; }
+        .navbar-brand, .nav-link { color: #fff !important; }
+        .bab-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 0 40px; margin-bottom: 30px; }
+        .bab-header h1 { font-weight: 700; }
+        .content-section { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .content-section h2 { color: #764ba2; font-weight: 600; margin-bottom: 20px; border-left: 5px solid #667eea; padding-left: 15px; }
+        .content-section h3 { font-weight: 600; margin-top: 25px; color: #495057; }
+        pre[class*="language-"] { border-radius: 10px; margin: 20px 0; }
+        .markicob { background: #e7f5ff; border-left: 5px solid #0d6efd; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .markicob h4 { color: #0d6efd; font-weight: 600; }
+        .btn-jawaban { background: #764ba2; color: white; border: none; padding: 8px 20px; border-radius: 50px; margin-bottom: 15px; }
+        .btn-jawaban:hover { background: #5a3b7a; }
+        .jawaban { background: #f1f3f5; padding: 20px; border-radius: 10px; margin-top: 15px; border-left: 4px solid #28a745; display: none; }
+        .jawaban.show { display: block; }
+        .nav-bab { display: flex; justify-content: space-between; margin-top: 40px; }
+        .nav-bab a { background: #764ba2; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 500; }
+        .nav-bab a:hover { background: #5a3b7a; }
+        footer { background: #343a40; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-code-square me-2"></i>JS Mastery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab1.html">Bab 1</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="bab2.html">Bab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab3.html">Bab 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab4.html">Bab 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab5.html">Bab 5</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab6.html">Bab 6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab7.html">Bab 7</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bab-header">
+        <div class="container text-center">
+            <h1>Bab 2: Variabel, Tipe Data, dan Operator</h1>
+            <p class="lead">Menyimpan data dengan variabel, mengenal tipe data, dan menggunakan operator.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 2.1 Variabel -->
+        <div class="content-section">
+            <h2>2.1 Variabel</h2>
+            <p>Variabel adalah tempat menyimpan data di memori. Ibarat kotak berlabel yang bisa diisi dan diubah isinya. <strong>Mengapa perlu?</strong> Untuk menyimpan data seperti nama, umur, skor, dll.</p>
+            <p><strong>Cara deklarasi:</strong></p>
+            <ul>
+                <li><code>let</code> – untuk data yang bisa berubah. Contoh: <code>let umur = 16;</code></li>
+                <li><code>const</code> – untuk data tetap (konstan). Contoh: <code>const PI = 3.14;</code></li>
+                <li><code>var</code> – cara lama, sebaiknya dihindari.</li>
+            </ul>
+            <p>Jika mencoba mengubah <code>const</code>, akan error.</p>
+            <pre><code class="language-javascript">let umur = 16;
+umur = 17; // diperbolehkan
+const PI = 3.14;
+// PI = 3.14159; // error!</code></pre>
+
+            <!-- MARKICOB 1: Variabel -->
+            <div class="markicob">
+                <h4><i class="bi bi bi-emoji-sunglasses"></i> MARKICOB 1: Bermain dengan Variabel</h4>
+                <p>Buat file HTML dan coba kode berikut. Lihat hasilnya di console dan di halaman.</p>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Percobaan Variabel&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+    &lt;script&gt;
+        let nama = "Ani";
+        let umur = 15;
+        const kelas = "XI";
+        let teks = "Nama: " + nama + "&lt;br&gt;Umur: " + umur + "&lt;br&gt;Kelas: " + kelas;
+        document.getElementById("output").innerHTML = teks;
+        console.log("Nama:", nama, "Umur:", umur);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>Perhatikan bagaimana kita menggunakan <code>let</code> dan <code>const</code>. Coba ubah nilai <code>umur</code> dan lihat perubahannya.</p>
+            </div>
+        </div>
+
+        <!-- 2.2 Tipe Data -->
+        <div class="content-section">
+            <h2>2.2 Tipe Data</h2>
+            <p>Setiap data punya jenis. Kita perlu tahu jenisnya agar bisa mengolah dengan benar.</p>
+            <table class="table table-bordered">
+                <thead><tr><th>Tipe</th><th>Contoh</th><th>Penjelasan</th></tr></thead>
+                <tbody>
+                    <tr><td>String</td><td><code>"Halo"</code>, <code>'Belajar'</code></td><td>Teks, diapit kutip.</td></tr>
+                    <tr><td>Number</td><td><code>10</code>, <code>3.14</code></td><td>Angka bulat atau desimal.</td></tr>
+                    <tr><td>Boolean</td><td><code>true</code>, <code>false</code></td><td>Nilai kebenaran.</td></tr>
+                    <tr><td>Null</td><td><code>null</code></td><td>Sengaja dikosongkan.</td></tr>
+                    <tr><td>Undefined</td><td><code>let x;</code></td><td>Belum diisi.</td></tr>
+                </tbody>
+            </table>
+            <p>Cek tipe dengan <code>typeof</code>.</p>
+            <pre><code class="language-javascript">let nama = "Budi";
+console.log(typeof nama); // "string"</code></pre>
+
+            <!-- MARKICOB 2: Tipe Data -->
+            <div class="markicob">
+                <h4><i class="bi bi bi-emoji-sunglasses"></i> MARKICOB 2: Mengecek Tipe Data</h4>
+                <pre><code class="language-html">&lt;script&gt;
+    let a = "Halo";
+    let b = 123;
+    let c = true;
+    let d;
+    let e = null;
+    console.log(typeof a, typeof b, typeof c, typeof d, typeof e);
+    // string number boolean undefined object (null adalah object karena bug lama)
+&lt;/script&gt;</code></pre>
+                <p>Amati hasilnya di console. Perhatikan bahwa <code>typeof null</code> mengembalikan "object" (ini adalah keanehan JavaScript).</p>
+            </div>
+        </div>
+
+        <!-- 2.3 Operator -->
+        <div class="content-section">
+            <h2>2.3 Operator</h2>
+            
+            <h3>Aritmatika</h3>
+            <table class="table table-bordered">
+                <tr><th>Operator</th><th>Nama</th><th>Contoh</th></tr>
+                <tr><td>+</td><td>Penjumlahan</td><td>5+2=7</td></tr>
+                <tr><td>-</td><td>Pengurangan</td><td>5-2=3</td></tr>
+                <tr><td>*</td><td>Perkalian</td><td>5*2=10</td></tr>
+                <tr><td>/</td><td>Pembagian</td><td>10/2=5</td></tr>
+                <tr><td>%</td><td>Modulus (sisa bagi)</td><td>10%3=1</td></tr>
+                <tr><td>**</td><td>Pangkat</td><td>2**3=8</td></tr>
+            </table>
+
+            <h3>Perbandingan</h3>
+            <table class="table table-bordered">
+                <tr><th>Operator</th><th>Arti</th><th>Contoh</th></tr>
+                <tr><td>==</td><td>Sama nilai</td><td>5=="5" true</td></tr>
+                <tr><td>===</td><td>Sama nilai dan tipe</td><td>5==="5" false</td></tr>
+                <tr><td>!=</td><td>Tidak sama nilai</td><td>5!=3 true</td></tr>
+                <tr><td>!==</td><td>Tidak sama nilai/tipe</td><td>5!=="5" true</td></tr>
+                <tr><td>></td><td>Lebih besar</td><td>8>5 true</td></tr>
+                <tr><td><</td><td>Lebih kecil</td><td>2<1 false</td></tr>
+                <tr><td>>=</td><td>Lebih besar/sama</td><td>5>=5 true</td></tr>
+                <tr><td><=</td><td>Lebih kecil/sama</td><td>4<=3 false</td></tr>
+            </table>
+
+            <h3>Logika</h3>
+            <table class="table table-bordered">
+                <tr><th>Operator</th><th>Nama</th><th>Contoh</th></tr>
+                <tr><td>&&</td><td>AND</td><td>true && false = false</td></tr>
+                <tr><td>||</td><td>OR</td><td>true || false = true</td></tr>
+                <tr><td>!</td><td>NOT</td><td>!true = false</td></tr>
+            </table>
+
+            <!-- MARKICOB 3: Operator -->
+            <div class="markicob">
+                <h4><i class="bi bi bi-emoji-sunglasses"></i> MARKICOB 3: Menggunakan Operator</h4>
+                <pre><code class="language-html">&lt;script&gt;
+    let a = 10, b = 3;
+    console.log("Penjumlahan:", a + b);
+    console.log("Sisa bagi:", a % b);
+    console.log("Apakah a > b?", a > b);
+    console.log("Apakah a === '10'?", a === '10');
+    let umur = 17;
+    let punyaKTP = true;
+    console.log("Boleh bikin SIM?", umur >= 17 && punyaKTP);
+&lt;/script&gt;</code></pre>
+                <p>Perhatikan perbedaan antara <code>==</code> dan <code>===</code>. Operator logika sangat berguna untuk pengambilan keputusan.</p>
+            </div>
+
+            <!-- Latihan 2.1, 2.2, 2.3 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 2.1</h5>
+                <p>Buat program dengan <code>let</code> untuk menyimpan nama dan nilai matematika, dan <code>const</code> untuk menyimpan nama sekolah. Tampilkan semua data ke halaman menggunakan <code>innerHTML</code>.</p>
+                <button class="btn-jawaban" onclick="promptPassword('jawab2_1')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab2_1" class="jawaban"></div>
+            </div>
+
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 2.2</h5>
+                <p>Buat variabel dengan tipe String, Number, Boolean, Null, dan Undefined. Tampilkan nilainya dan tipenya di halaman.</p>
+                <button class="btn-jawaban" onclick="promptPassword('jawab2_2')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab2_2" class="jawaban"></div>
+            </div>
+
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 2.3</h5>
+                <ol>
+                    <li>Buat program menghitung luas persegi panjang (panjang * lebar). Tampilkan hasilnya.</li>
+                    <li>Buat perbandingan: apakah 20 lebih besar dari 15 dan 20 lebih kecil dari 30? Tampilkan hasilnya (true/false).</li>
+                    <li>Buat program untuk cek kelulusan: jika nilai >= 75 maka "Lulus", selain itu "Tidak Lulus". Gunakan if else.</li>
+                </ol>
+                <button class="btn-jawaban" onclick="promptPassword('jawab2_3')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab2_3" class="jawaban"></div>
+            </div>
+        </div>
+
+        <!-- Navigasi -->
+        <div class="nav-bab">
+            <a href="bab1.html"><i class="bi bi-arrow-left"></i> Bab 1</a>
+            <a href="bab3.html">Bab 3: Struktur Kontrol <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 JS Mastery - Modul Interaktif Kelas XI Petra</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script>
+        const PASSWORD = "benny123";
+
+        function promptPassword(id) {
+            let input = prompt("Masukkan password untuk melihat kunci jawaban:");
+            if (input === PASSWORD) {
+                let jawabanDiv = document.getElementById(id);
+                if (jawabanDiv.innerHTML.trim() === "") {
+                    if (id === "jawab2_1") {
+                        jawabanDiv.innerHTML = `<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Latihan Variabel&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="hasil"&gt;&lt;/div&gt;
+    &lt;script&gt;
+        let nama = "Budi";
+        let nilaiMatematika = 90;
+        const sekolah = "SMA Petra";
+        let teks = \`Nama: \${nama}&lt;br&gt;Nilai Matematika: \${nilaiMatematika}&lt;br&gt;Sekolah: \${sekolah}\`;
+        document.getElementById("hasil").innerHTML = teks;
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>`;
+                    } else if (id === "jawab2_2") {
+                        jawabanDiv.innerHTML = `<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Latihan Tipe Data&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="hasil"&gt;&lt;/div&gt;
+    &lt;script&gt;
+        let string = "Ini string";
+        let number = 123;
+        let boolean = true;
+        let kosong = null;
+        let undefinedVar;
+        let teks = \`
+            string: \${string} (\${typeof string})&lt;br&gt;
+            number: \${number} (\${typeof number})&lt;br&gt;
+            boolean: \${boolean} (\${typeof boolean})&lt;br&gt;
+            null: \${kosong} (\${typeof kosong})&lt;br&gt;
+            undefined: \${undefinedVar} (\${typeof undefinedVar})
+        \`;
+        document.getElementById("hasil").innerHTML = teks;
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>`;
+                    } else if (id === "jawab2_3") {
+                        jawabanDiv.innerHTML = `<pre><code class="language-javascript">// 1. Luas persegi panjang
+let panjang = 10, lebar = 5;
+let luas = panjang * lebar;
+console.log("Luas: " + luas);
+
+// 2. Perbandingan
+let hasil = (20 > 15) && (20 < 30);
+console.log(hasil); // true
+
+// 3. Kelulusan
+let nilai = 80;
+if (nilai >= 75) {
+    console.log("Lulus");
+} else {
+    console.log("Tidak lulus");
+}</code></pre>`;
+                    }
+                }
+                jawabanDiv.classList.toggle('show');
+            } else {
+                alert("Password salah!");
+            }
+        }
+    </script>
+</body>
+</html>

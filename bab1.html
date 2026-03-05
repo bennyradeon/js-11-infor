@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Dasar JavaScript</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Prism.js untuk syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        .navbar {
+            background: #764ba2 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .bab-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 30px;
+        }
+        .bab-header h1 {
+            font-weight: 700;
+        }
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .content-section h2 {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        .content-section h3 {
+            font-weight: 600;
+            margin-top: 25px;
+            color: #495057;
+        }
+        pre[class*="language-"] {
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .markicob {
+            background: #e7f5ff;
+            border-left: 5px solid #0d6efd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .markicob h4 {
+            color: #0d6efd;
+            font-weight: 600;
+        }
+        .btn-jawaban {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+        .btn-jawaban:hover {
+            background: #5a3b7a;
+        }
+        .jawaban {
+            background: #f1f3f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        .jawaban.show {
+            display: block;
+        }
+        .password-form {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .nav-bab {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .nav-bab a {
+            background: #764ba2;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .nav-bab a:hover {
+            background: #5a3b7a;
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-code-square me-2"></i>JS Mastery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="bab1.html">Bab 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab2.html">Bab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab3.html">Bab 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab4.html">Bab 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab5.html">Bab 5</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab6.html">Bab 6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab7.html">Bab 7</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bab-header">
+        <div class="container text-center">
+            <h1>Bab 1: Dasar-Dasar JavaScript</h1>
+            <p class="lead">Mengenal JavaScript, cara menjalankan, dan menampilkan output.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 1.1 Pengenalan JavaScript -->
+        <div class="content-section">
+            <h2>1.1 Pengenalan JavaScript</h2>
+            <p>Bayangkan HTML sebagai kerangka rumah, CSS sebagai cat dan dekorasi, dan JavaScript sebagai penghuni yang membuat rumah menjadi hidup. JavaScript memungkinkan halaman web bereaksi terhadap interaksi pengguna.</p>
+            <p><strong>Mengapa perlu JavaScript?</strong> Karena pengguna ingin pengalaman interaktif: tombol diklik, gambar bergeser, validasi form, dll. JavaScript berjalan di browser (client-side), jadi tidak perlu instalasi tambahan.</p>
+        </div>
+
+        <!-- MARKICOB 1: Percobaan pertama -->
+        <div class="markicob">
+            <h4><i class="bi bi bi-emoji-sunglasses"></i> MARKICOB 1: Coba JavaScript di Console</h4>
+            <p>Buka browser, tekan F12, pilih tab Console. Ketik kode berikut dan lihat hasilnya:</p>
+            <pre><code class="language-javascript">console.log("Halo, ini percobaan pertama!");
+alert("Selamat datang di JavaScript!");
+let nama = "Budi";
+console.log("Nama saya " + nama);</code></pre>
+            <p>Perhatikan: <code>console.log</code> menampilkan teks di console, <code>alert</code> memunculkan pop-up. Variabel <code>nama</code> menyimpan data dan bisa digunakan ulang.</p>
+            <p><strong>Apa yang bisa dipelajari?</strong> Cara dasar menulis dan menjalankan JavaScript, serta penggunaan variabel sederhana.</p>
+        </div>
+
+        <!-- 1.2 Cara Menjalankan JavaScript -->
+        <div class="content-section">
+            <h2>1.2 Cara Menjalankan JavaScript</h2>
+            
+            <h3>1.2.1 Melalui Console Browser</h3>
+            <p>Tekan F12 → tab Console, lalu ketik kode JavaScript. Cocok untuk eksperimen cepat.</p>
+            <pre><code class="language-javascript">console.log("Halo, dunia!");
+alert("Ini alert dari console");</code></pre>
+
+            <h3>1.2.2 Embedded / Internal JavaScript</h3>
+            <p>Kode ditulis dalam tag <code>&lt;script&gt;</code> di file HTML.</p>
+            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Embedded JS&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        alert("Halo dari embedded JS!");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <h3>1.2.3 Inline JavaScript</h3>
+            <p>Kode ditulis langsung di atribut event HTML, misal <code>onclick</code>.</p>
+            <pre><code class="language-html">&lt;button onclick="alert('Tombol diklik!')"&gt;Klik&lt;/button&gt;
+&lt;p onmouseover="this.style.color='red'" onmouseout="this.style.color='black'"&gt;Arahkan mouse&lt;/p&gt;</code></pre>
+
+            <h3>1.2.4 External JavaScript</h3>
+            <p>Kode dipisah ke file .js, dipanggil dengan <code>&lt;script src="..."&gt;&lt;/script&gt;</code>.</p>
+            <pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+            <pre><code class="language-javascript">// script.js
+alert("File eksternal siap!");</code></pre>
+
+            <!-- MARKICOB 2: Latihan praktik embedded dan inline -->
+            <div class="markicob">
+                <h4><i class="bi bi bi-emoji-sunglasses"></i> MARKICOB 2: Praktik Embedded dan Inline</h4>
+                <p>Coba buat file HTML dengan kode berikut. Simpan dan buka di browser. Amati apa yang terjadi ketika tombol diklik dan mouse diarahkan.</p>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Percobaan MARKICOB&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Selamat Datang di Percobaan&lt;/h1&gt;
+    &lt;button onclick="alert('Kamu mengklik tombol!')"&gt;Klik Aku&lt;/button&gt;
+    &lt;p onmouseover="this.style.backgroundColor='yellow'" onmouseout="this.style.backgroundColor='white'"&gt;Arahkan mouse ke sini&lt;/p&gt;
+    &lt;script&gt;
+        console.log("Halaman dimuat!");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>Latihan ini membantu memahami event onclick, onmouseover, dan penggunaan console.</p>
+            </div>
+        </div>
+
+        <!-- 1.3 Menampilkan Output -->
+        <div class="content-section">
+            <h2>1.3 Menampilkan Output di JavaScript</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr><th>Metode</th><th>Kegunaan</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>console.log()</td><td>Menampilkan pesan di console (debugging)</td></tr>
+                    <tr><td>alert()</td><td>Kotak dialog pop-up</td></tr>
+                    <tr><td>document.write()</td><td>Menulis langsung ke dokumen (hati-hati)</td></tr>
+                    <tr><td>innerHTML</td><td>Mengubah konten elemen HTML</td></tr>
+                </tbody>
+            </table>
+            <p>Contoh kode:</p>
+            <pre><code class="language-html">&lt;div id="tempat"&gt;&lt;/div&gt;
+&lt;script&gt;
+    console.log("Pesan di console");
+    alert("Ini alert!");
+    document.write("&lt;p&gt;Ditulis dengan document.write()&lt;/p&gt;");
+    document.getElementById("tempat").innerHTML = "&lt;b&gt;innerHTML&lt;/b&gt;";
+&lt;/script&gt;</code></pre>
+
+            <!-- MARKICOB 3: Praktik innerHTML -->
+            <div class="markicob">
+                <h4><i class="bi bi bi-emoji-sunglasses"></i> MARKICOB 3: Mengubah Konten dengan innerHTML</h4>
+                <p>Buat file HTML berikut dan buka di browser. Klik tombol untuk melihat perubahan.</p>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Percobaan innerHTML&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2 id="judul"&gt;Judul Awal&lt;/h2&gt;
+    &lt;button onclick="ubahJudul()"&gt;Ubah Judul&lt;/button&gt;
+    &lt;script&gt;
+        function ubahJudul() {
+            document.getElementById("judul").innerHTML = "Judul telah diubah!";
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>Perhatikan bagaimana fungsi <code>ubahJudul()</code> menggunakan <code>innerHTML</code> untuk mengubah teks heading. Ini adalah dasar manipulasi DOM.</p>
+            </div>
+
+            <!-- Latihan 1.2 (sudah ada di atas) dan 1.3 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 1.2</h5>
+                <ol>
+                    <li>Buat file HTML dengan embedded JS yang menampilkan alert "Halo dari embedded".</li>
+                    <li>Buat tombol dengan inline JS yang mengubah teks sebuah paragraf menjadi "Teks berubah".</li>
+                    <li>Buat file HTML dan external JS yang menampilkan alert dan mengubah teks sebuah paragraf.</li>
+                </ol>
+                <!-- Tombol lihat kunci dengan password -->
+                <button class="btn-jawaban" onclick="promptPassword('jawab1_2')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab1_2" class="jawaban"></div>
+            </div>
+
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 1.3</h5>
+                <p>Buat halaman HTML dengan sebuah paragraf kosong ber-id "demo". Gunakan <code>innerHTML</code> untuk mengisi paragraf tersebut dengan teks "Halo dari JavaScript". Tampilkan juga <code>alert</code> dan <code>console.log</code> dengan pesan bebas.</p>
+                <button class="btn-jawaban" onclick="promptPassword('jawab1_3')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab1_3" class="jawaban"></div>
+            </div>
+        </div>
+
+        <!-- Navigasi antar bab -->
+        <div class="nav-bab">
+            <a href="index.html"><i class="bi bi-house"></i> Home</a>
+            <a href="bab2.html">Bab 2: Variabel, Tipe Data, Operator <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 JS Mastery - Modul Interaktif Kelas XI Petra</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <!-- Custom JS untuk password dan toggle jawaban -->
+    <script>
+        const PASSWORD = "benny123";
+
+        function promptPassword(id) {
+            let input = prompt("Masukkan password untuk melihat kunci jawaban:");
+            if (input === PASSWORD) {
+                // Tampilkan jawaban berdasarkan id
+                let jawabanDiv = document.getElementById(id);
+                // Isi jawaban jika belum ada
+                if (jawabanDiv.innerHTML.trim() === "") {
+                    if (id === "jawab1_2") {
+                        jawabanDiv.innerHTML = `<pre><code class="language-html">&lt;!-- 1. Embedded --&gt;
+&lt;script&gt;alert("Halo dari embedded");&lt;/script&gt;
+
+&lt;!-- 2. Inline --&gt;
+&lt;button onclick="document.getElementById('teks').innerHTML='Teks berubah'"&gt;Klik&lt;/button&gt;
+&lt;p id="teks"&gt;Teks awal&lt;/p&gt;
+
+&lt;!-- 3. External --&gt;
+&lt;!-- index.html --&gt;
+&lt;p id="pesan"&gt;Teks awal&lt;/p&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;!-- script.js --&gt;
+alert("Halo dari external!");
+document.getElementById("pesan").innerHTML = "Teks diubah oleh JS eksternal.";</code></pre>`;
+                    } else if (id === "jawab1_3") {
+                        jawabanDiv.innerHTML = `<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Latihan Output&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;p id="demo"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        alert("Ini alert");
+        console.log("Ini console log");
+        document.getElementById("demo").innerHTML = "Halo dari JavaScript";
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>`;
+                    }
+                }
+                jawabanDiv.classList.toggle('show');
+            } else {
+                alert("Password salah!");
+            }
+        }
+    </script>
+</body>
+</html>

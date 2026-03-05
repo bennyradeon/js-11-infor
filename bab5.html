@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Fungsi</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Prism.js untuk syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        .navbar {
+            background: #764ba2 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .bab-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 30px;
+        }
+        .bab-header h1 {
+            font-weight: 700;
+        }
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .content-section h2 {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        .content-section h3 {
+            font-weight: 600;
+            margin-top: 25px;
+            color: #495057;
+        }
+        pre[class*="language-"] {
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .btn-jawaban {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+        .btn-jawaban:hover {
+            background: #5a3b7a;
+        }
+        .jawaban {
+            background: #f1f3f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        .jawaban.show {
+            display: block;
+        }
+        .markicob {
+            background: #e7f5ff;
+            border-left: 5px solid #339af0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .markicob h4 {
+            color: #1c7ed6;
+        }
+        .nav-bab {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .nav-bab a {
+            background: #764ba2;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .nav-bab a:hover {
+            background: #5a3b7a;
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-code-square me-2"></i>JS Mastery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab1.html">Bab 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab2.html">Bab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab3.html">Bab 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab4.html">Bab 4</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="bab5.html">Bab 5</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab6.html">Bab 6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab7.html">Bab 7</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Bab -->
+    <div class="bab-header">
+        <div class="container text-center">
+            <h1>Bab 5: Fungsi</h1>
+            <p class="lead">Membuat kode yang dapat dipanggil berulang kali, dengan atau tanpa event.</p>
+        </div>
+    </div>
+
+    <!-- Konten Bab -->
+    <div class="container">
+        <!-- MARKICOB: Contoh Percobaan -->
+        <div class="markicob">
+            <h4><i class="bi bi-emoji-sunglasses"></i> MARKICOB – Coba Sendiri!</h4>
+            <p>Jalankan kode berikut di console browser atau buat file HTML. Fungsi adalah resep yang bisa dipakai berulang.</p>
+            <pre><code class="language-javascript">// Membuat fungsi sederhana
+function sapa(nama) {
+    return "Halo, " + nama + "!";
+}
+
+// Memanggil fungsi
+console.log(sapa("Budi"));
+console.log(sapa("Siti"));
+
+// Coba buat fungsi sendiri untuk menghitung luas persegi</code></pre>
+            <p><strong>Petunjuk:</strong> Fungsi membantu kita tidak menulis kode yang sama berulang kali.</p>
+        </div>
+
+        <!-- 5.1 Apa itu Fungsi? -->
+        <div class="content-section">
+            <h2>5.1 Apa itu Fungsi?</h2>
+            <p>Fungsi adalah blok kode yang dirancang untuk melakukan tugas tertentu dan bisa dipanggil kapan saja. Ibarat resep masakan: kita tulis sekali, bisa dipakai berkali-kali.</p>
+            <p><strong>Mengapa perlu fungsi?</strong></p>
+            <ul>
+                <li>Menghindari penulisan kode berulang.</li>
+                <li>Program lebih terstruktur.</li>
+                <li>Memudahkan perbaikan (cukup ubah di satu tempat).</li>
+            </ul>
+            
+            <h3>Cara Mendeklarasikan Fungsi</h3>
+            <p><strong>Function Declaration:</strong></p>
+            <pre><code class="language-javascript">function tambah(a, b) {
+    return a + b;
+}</code></pre>
+            <p><strong>Function Expression:</strong></p>
+            <pre><code class="language-javascript">const kali = function(a, b) {
+    return a * b;
+};</code></pre>
+            <p><strong>Arrow Function (ES6):</strong></p>
+            <pre><code class="language-javascript">const bagi = (a, b) => a / b;</code></pre>
+
+            <h3>Parameter dan Return</h3>
+            <p>Fungsi bisa menerima input (parameter) dan mengembalikan output (return). Jika tidak ada <code>return</code>, fungsi mengembalikan <code>undefined</code>.</p>
+            <pre><code class="language-javascript">function sapa(nama) {
+    console.log("Halo " + nama);
+    // tidak ada return, jadi undefined
+}
+let hasil = sapa("Budi"); // console log, hasil = undefined</code></pre>
+
+            <!-- Latihan 5.1 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 5.1</h5>
+                <ol>
+                    <li>Buat fungsi <code>luasSegitiga(alas, tinggi)</code> yang mengembalikan luas segitiga (alas * tinggi / 2).</li>
+                    <li>Buat fungsi <code>sapa(nama)</code> yang mengembalikan "Halo, [nama]!".</li>
+                    <li>Panggil kedua fungsi tersebut dan tampilkan hasilnya di halaman HTML menggunakan <code>innerHTML</code>.</li>
+                </ol>
+                <button class="btn-jawaban" onclick="showJawaban('jawab5_1')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab5_1" class="jawaban">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Latihan Fungsi&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="hasil"&gt;&lt;/div&gt;
+    &lt;script&gt;
+        function luasSegitiga(alas, tinggi) {
+            return (alas * tinggi) / 2;
+        }
+        function sapa(nama) {
+            return "Halo, " + nama + "!";
+        }
+        let hasil1 = luasSegitiga(10, 5);
+        let hasil2 = sapa("Budi");
+        document.getElementById("hasil").innerHTML = "Luas: " + hasil1 + "&lt;br&gt;" + hasil2;
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5.2 Fungsi dengan Event -->
+        <div class="content-section">
+            <h2>5.2 Fungsi dengan Event</h2>
+            <p>Event adalah kejadian seperti klik tombol, mouse bergerak, atau keyboard ditekan. Kita bisa memanggil fungsi saat event terjadi.</p>
+
+            <h3>Menggunakan atribut <code>onclick</code> (Inline)</h3>
+            <pre><code class="language-html">&lt;button onclick="tampilkanPesan()"&gt;Klik Saya&lt;/button&gt;
+&lt;p id="pesan"&gt;&lt;/p&gt;
+&lt;script&gt;
+    function tampilkanPesan() {
+        document.getElementById("pesan").innerHTML = "Tombol diklik!";
+    }
+&lt;/script&gt;</code></pre>
+
+            <h3>Menggunakan <code>addEventListener</code> (lebih disarankan)</h3>
+            <pre><code class="language-html">&lt;button id="tombol"&gt;Klik Saya&lt;/button&gt;
+&lt;p id="pesan"&gt;&lt;/p&gt;
+&lt;script&gt;
+    let tombol = document.getElementById("tombol");
+    function tampilkanPesan() {
+        document.getElementById("pesan").innerHTML = "Tombol diklik!";
+    }
+    tombol.addEventListener("click", tampilkanPesan);
+&lt;/script&gt;</code></pre>
+            <p><strong>Keuntungan addEventListener:</strong> bisa menambahkan banyak listener, mudah dihapus, dan memisahkan HTML dari JavaScript.</p>
+
+            <!-- Latihan 5.2 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 5.2</h5>
+                <p>Buat halaman dengan dua input angka dan tombol "Jumlah". Saat tombol diklik, panggil fungsi yang menjumlahkan kedua angka dan tampilkan hasilnya di halaman. Gunakan <code>addEventListener</code>.</p>
+                <button class="btn-jawaban" onclick="showJawaban('jawab5_2')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab5_2" class="jawaban">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Kalkulator&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type="number" id="a" placeholder="Angka 1"&gt;
+    &lt;input type="number" id="b" placeholder="Angka 2"&gt;
+    &lt;button id="hitung"&gt;Jumlah&lt;/button&gt;
+    &lt;p id="hasil"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        let tombol = document.getElementById("hitung");
+        function jumlah() {
+            let angka1 = Number(document.getElementById("a").value);
+            let angka2 = Number(document.getElementById("b").value);
+            let hasil = angka1 + angka2;
+            document.getElementById("hasil").innerHTML = "Hasil: " + hasil;
+        }
+        tombol.addEventListener("click", jumlah);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKICOB Tambahan: Fungsi dengan Event -->
+        <div class="markicob">
+            <h4><i class="bi bi-emoji-sunglasses"></i> MARKICOB – Eksperimen Fungsi dan Event</h4>
+            <p>Coba buat halaman sederhana dengan tombol yang mengubah warna latar belakang. Gunakan fungsi dan event.</p>
+            <pre><code class="language-html">&lt;button id="btnWarna"&gt;Ubah Warna&lt;/button&gt;
+&lt;div id="kotak" style="width:100px;height:100px;background:red;"&gt;&lt;/div&gt;
+&lt;script&gt;
+    let btn = document.getElementById("btnWarna");
+    let kotak = document.getElementById("kotak");
+    btn.addEventListener("click", function() {
+        kotak.style.backgroundColor = "blue";
+    });
+&lt;/script&gt;</code></pre>
+            <p>Modifikasi agar warnanya berganti acak setiap kali diklik.</p>
+        </div>
+
+        <!-- Navigasi antar bab -->
+        <div class="nav-bab">
+            <a href="bab4.html"><i class="bi bi-arrow-left"></i> Bab 4: Array</a>
+            <a href="bab6.html">Bab 6: Manipulasi DOM <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 JS Mastery - Modul Interaktif Kelas XI Petra</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <!-- Custom JS untuk password -->
+    <script>
+        function showJawaban(id) {
+            var pwd = prompt("Masukkan password untuk melihat kunci jawaban:");
+            if (pwd === "benny123") {
+                document.getElementById(id).classList.toggle('show');
+            } else {
+                alert("Password salah!");
+            }
+        }
+    </script>
+</body>
+</html>

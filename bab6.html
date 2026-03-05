@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Manipulasi DOM</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Prism.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        .navbar {
+            background: #764ba2 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .bab-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 30px;
+        }
+        .bab-header h1 {
+            font-weight: 700;
+        }
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .content-section h2 {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        .content-section h3 {
+            font-weight: 600;
+            margin-top: 25px;
+            color: #495057;
+        }
+        pre[class*="language-"] {
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .btn-jawaban {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+        .btn-jawaban:hover {
+            background: #5a3b7a;
+        }
+        .jawaban {
+            background: #f1f3f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        .jawaban.show {
+            display: block;
+        }
+        .markicob {
+            background: #e7f5ff;
+            border-left: 5px solid #339af0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .markicob h4 {
+            color: #1c7ed6;
+        }
+        .nav-bab {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .nav-bab a {
+            background: #764ba2;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .nav-bab a:hover {
+            background: #5a3b7a;
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-code-square me-2"></i>JS Mastery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab1.html">Bab 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab2.html">Bab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab3.html">Bab 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab4.html">Bab 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab5.html">Bab 5</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="bab6.html">Bab 6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bab7.html">Bab 7</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Bab -->
+    <div class="bab-header">
+        <div class="container text-center">
+            <h1>Bab 6: Manipulasi DOM</h1>
+            <p class="lead">Mengakses dan mengubah elemen HTML, menambah/menghapus elemen, dan menangani event.</p>
+        </div>
+    </div>
+
+    <!-- Konten Bab -->
+    <div class="container">
+        <!-- MARKICOB: Contoh Percobaan -->
+        <div class="markicob">
+            <h4><i class="bi bi-emoji-sunglasses"></i> MARKICOB – Coba Sendiri!</h4>
+            <p>Buka console browser dan jalankan kode berikut pada halaman web apa pun. Lihat bagaimana JavaScript bisa mengubah halaman.</p>
+            <pre><code class="language-javascript">// Pilih elemen body
+let body = document.body;
+// Ubah warna latar
+body.style.backgroundColor = "lightblue";
+// Buat elemen baru
+let p = document.createElement("p");
+p.textContent = "Paragraf baru dibuat dari console!";
+body.appendChild(p);</code></pre>
+            <p>Ini adalah contoh manipulasi DOM secara langsung.</p>
+        </div>
+
+        <!-- 6.1 Memilih Elemen HTML -->
+        <div class="content-section">
+            <h2>6.1 Memilih Elemen HTML</h2>
+            <p>Sebelum memanipulasi, kita harus memilih elemen yang akan diubah. Berikut metode-metodenya:</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr><th>Metode</th><th>Deskripsi</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>getElementById("id")</code></td><td>Memilih satu elemen berdasarkan id.</td></tr>
+                    <tr><td><code>getElementsByClassName("class")</code></td><td>Memilih semua elemen dengan class tertentu (hasil seperti array).</td></tr>
+                    <tr><td><code>getElementsByTagName("p")</code></td><td>Memilih semua elemen dengan tag tertentu.</td></tr>
+                    <tr><td><code>querySelector(".class")</code></td><td>Memilih elemen pertama yang cocok dengan selektor CSS.</td></tr>
+                    <tr><td><code>querySelectorAll("p")</code></td><td>Memilih semua elemen yang cocok dengan selektor CSS.</td></tr>
+                </tbody>
+            </table>
+            <pre><code class="language-javascript">let judul = document.getElementById("judul");
+let paragraf = document.getElementsByClassName("teks");
+let pertama = document.querySelector(".teks");</code></pre>
+
+            <!-- Latihan 6.1 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 6.1</h5>
+                <p>Buat halaman dengan heading ber-id "header" dan tiga paragraf ber-class "isi". Gunakan berbagai metode seleksi dan tampilkan di console apa yang didapat.</p>
+                <button class="btn-jawaban" onclick="showJawaban('jawab6_1')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab6_1" class="jawaban">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Latihan Seleksi&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="header"&gt;Heading&lt;/h1&gt;
+    &lt;p class="isi"&gt;Paragraf 1&lt;/p&gt;
+    &lt;p class="isi"&gt;Paragraf 2&lt;/p&gt;
+    &lt;p class="isi"&gt;Paragraf 3&lt;/p&gt;
+    &lt;script&gt;
+        console.log(document.getElementById("header"));
+        console.log(document.getElementsByClassName("isi"));
+        console.log(document.getElementsByTagName("p"));
+        console.log(document.querySelector(".isi"));
+        console.log(document.querySelectorAll(".isi"));
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6.2 Mengubah Konten dan Gaya -->
+        <div class="content-section">
+            <h2>6.2 Mengubah Konten dan Gaya</h2>
+            <p>Setelah memiliki elemen, kita bisa ubah isi dan tampilannya.</p>
+            <h3>Mengubah konten dengan <code>innerHTML</code> atau <code>textContent</code></h3>
+            <pre><code class="language-javascript">let judul = document.getElementById("judul");
+judul.innerHTML = "Judul Baru"; // bisa menyertakan tag HTML
+judul.textContent = "Judul Baru"; // hanya teks</code></pre>
+            <h3>Mengubah gaya dengan <code>style</code></h3>
+            <pre><code class="language-javascript">judul.style.color = "red";
+judul.style.fontSize = "30px";
+judul.style.backgroundColor = "yellow";</code></pre>
+
+            <!-- Latihan 6.2 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 6.2</h5>
+                <p>Buat sebuah div dengan teks "Awal". Sediakan tombol yang mengubah warna latar belakang div menjadi biru dan teksnya menjadi "Berubah".</p>
+                <button class="btn-jawaban" onclick="showJawaban('jawab6_2')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab6_2" class="jawaban">
+                    <pre><code class="language-html">&lt;div id="kotak" style="width:200px;height:100px;background:lightgray;"&gt;Awal&lt;/div&gt;
+&lt;button onclick="ubah()"&gt;Ubah&lt;/button&gt;
+&lt;script&gt;
+    function ubah() {
+        let kotak = document.getElementById("kotak");
+        kotak.style.backgroundColor = "blue";
+        kotak.innerHTML = "Berubah";
+    }
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6.3 Menambah dan Menghapus Elemen -->
+        <div class="content-section">
+            <h2>6.3 Menambah dan Menghapus Elemen</h2>
+            <h3>Menambah elemen baru</h3>
+            <p>Langkah: <code>createElement</code>, isi konten, lalu <code>appendChild</code>.</p>
+            <pre><code class="language-javascript">let liBaru = document.createElement("li");
+liBaru.textContent = "Item baru";
+document.getElementById("list").appendChild(liBaru);</code></pre>
+            <h3>Menghapus elemen</h3>
+            <p>Gunakan <code>remove()</code> atau <code>removeChild()</code>.</p>
+            <pre><code class="language-javascript">let hapus = document.getElementById("item");
+hapus.remove(); // langsung hapus
+
+// Atau hapus dari induk
+let induk = document.getElementById("list");
+let item = document.getElementById("item");
+induk.removeChild(item);</code></pre>
+
+            <!-- Latihan 6.3 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 6.3</h5>
+                <p>Buat daftar tugas sederhana: ada input teks dan tombol "Tambah". Setiap tugas ditambahkan sebagai item list. Setiap item list juga punya tombol "Hapus" yang menghapus item tersebut.</p>
+                <button class="btn-jawaban" onclick="showJawaban('jawab6_3')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab6_3" class="jawaban">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Todo List&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Todo List&lt;/h2&gt;
+    &lt;input type="text" id="tugas"&gt;
+    &lt;button onclick="tambah()"&gt;Tambah&lt;/button&gt;
+    &lt;ul id="list"&gt;&lt;/ul&gt;
+    &lt;script&gt;
+        function tambah() {
+            let input = document.getElementById("tugas");
+            let teks = input.value.trim();
+            if (teks === "") return;
+            let li = document.createElement("li");
+            li.textContent = teks;
+            let btnHapus = document.createElement("button");
+            btnHapus.textContent = "Hapus";
+            btnHapus.onclick = function() {
+                this.parentElement.remove();
+            };
+            li.appendChild(btnHapus);
+            document.getElementById("list").appendChild(li);
+            input.value = "";
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6.4 Event Handling dengan addEventListener -->
+        <div class="content-section">
+            <h2>6.4 Event Handling dengan <code>addEventListener</code></h2>
+            <p><code>addEventListener</code> adalah cara modern untuk menangani event. Bisa menambahkan banyak listener, mudah dihapus.</p>
+            <pre><code class="language-javascript">let tombol = document.getElementById("tombol");
+tombol.addEventListener("click", function() {
+    alert("Tombol diklik!");
+});
+
+// Fungsi terpisah
+function tampilkan() {
+    console.log("Event terjadi!");
+}
+tombol.addEventListener("mouseover", tampilkan);</code></pre>
+            <p>Event yang umum: <code>click</code>, <code>mouseover</code>, <code>mouseout</code>, <code>keydown</code>, <code>keyup</code>, dll.</p>
+
+            <!-- Latihan 6.4 -->
+            <div class="mt-4 p-3 bg-light border-start border-primary">
+                <h5><i class="bi bi-pencil-square"></i> Latihan 6.4</h5>
+                <p>Buat kotak berwarna (div). Saat mouse masuk ke kotak, warnanya berubah. Saat mouse keluar, kembali ke warna semula. Gunakan <code>addEventListener</code>.</p>
+                <button class="btn-jawaban" onclick="showJawaban('jawab6_4')">Lihat Kunci Jawaban (Password)</button>
+                <div id="jawab6_4" class="jawaban">
+                    <pre><code class="language-html">&lt;div id="box" style="width:100px;height:100px;background:blue;"&gt;&lt;/div&gt;
+&lt;script&gt;
+    let box = document.getElementById("box");
+    box.addEventListener("mouseover", function() {
+        this.style.backgroundColor = "red";
+    });
+    box.addEventListener("mouseout", function() {
+        this.style.backgroundColor = "blue";
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKICOB Tambahan: Contoh Interaktif -->
+        <div class="markicob">
+            <h4><i class="bi bi-emoji-sunglasses"></i> MARKICOB – Eksperimen DOM Interaktif</h4>
+            <p>Coba buat halaman dengan form sederhana yang menampilkan teks yang diketik secara real-time.</p>
+            <pre><code class="language-html">&lt;input type="text" id="input" placeholder="Ketik sesuatu..."&gt;
+&lt;p id="output"&gt;&lt;/p&gt;
+&lt;script&gt;
+    let input = document.getElementById("input");
+    let output = document.getElementById("output");
+    input.addEventListener("keyup", function() {
+        output.textContent = "Kamu mengetik: " + this.value;
+    });
+&lt;/script&gt;</code></pre>
+            <p>Modifikasi agar hurufnya otomatis menjadi kapital.</p>
+        </div>
+
+        <!-- Navigasi antar bab -->
+        <div class="nav-bab">
+            <a href="bab5.html"><i class="bi bi-arrow-left"></i> Bab 5: Fungsi</a>
+            <a href="bab7.html">Bab 7: Proyek Todo List <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 JS Mastery - Modul Interaktif Kelas XI Petra</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <!-- Custom JS untuk password -->
+    <script>
+        function showJawaban(id) {
+            var pwd = prompt("Masukkan password untuk melihat kunci jawaban:");
+            if (pwd === "benny123") {
+                document.getElementById(id).classList.toggle('show');
+            } else {
+                alert("Password salah!");
+            }
+        }
+    </script>
+</body>
+</html>
